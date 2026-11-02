@@ -37,7 +37,7 @@ Data suhu/kelembapan dikirim ke broker publik **HiveMQ**
 
 | No | NRP | Nama | Ruangan | Jobdesk | GitHub |
 |---|---|---|---|---|---|
-| 1 | 2124600061 | Agmila Salsabila | `ruang1` | README & dokumentasi | [@agmilaocha-pixel](https://github.com/agmilaocha-pixel) |
+| 1 | 2124600061 | Agmila Salsabila | `ruang1` | README & dokumentasi | [@agmilaoca-pixel](https://github.com/agmilaoca-pixel) |
 | 2 | 2124600073 | Muhammad Ziat Thoriq | `ruang2` | Program ESP32 | [@Zthorrr](https://github.com/Zthorrr) |
 | 3 | 2124600076 | Joshua Gamylael | `ruang3` | Flow & dashboard Node-RED | [@JosGmyl](https://github.com/JosGmyl) |
 | 4 | 2124600077 | Fadiaz Arta Maulana | `ruang4` | Hardware & pengujian | [@fadiazarts](https://github.com/fadiazarts) |
