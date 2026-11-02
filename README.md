@@ -1,14 +1,9 @@
 # Kel3-TugasNodeRED-ESP32
+### Smart Multi-Room Environmental Monitoring & Actuator Control System via MQTT and Node-RED
 
-Sistem pemantauan suhu & kelembapan serta pengendalian lampu untuk **4 ruangan**
-(`ruang1`–`ruang4`) berbasis **ESP32** dan **Node-RED** melalui protokol **MQTT**.
-Setiap ruangan memiliki satu ESP32 dengan sensor **DHT11** dan **2 lampu LED**.
-Data suhu/kelembapan dikirim ke broker publik **HiveMQ**
-(`broker.mqttdashboard.com:1883`), lalu ditampilkan di dashboard Node-RED
-(chart 4 ruangan, gauge kelembapan, status online/offline, dan 8 saklar lampu).
+Proyek ini merupakan implementasi sistem automasi dan pemantauan lingkungan berbasis *Internet of Things* (IoT) untuk empat ruangan terdistribusi (**ruang1** hingga **ruang4**). Setiap ruangan dioperasikan oleh node mikrokontroler **ESP32** mandiri yang terintegrasi dengan sensor suhu dan kelembapan **DHT11** serta dua aktuator lampu LED yang dapat dikontrol secara dua arah (*bi-directional control*).
 
-> Semua topic memakai prefix kelompok `pens/klp3/...` agar tidak tercampur
-> dengan kelompok lain di broker publik.
+Seluruh telemetri data lingkungan dan instruksi kendali ditransmisikan secara *real-time* memanfaatkan protokol ringan **MQTT** (*Message Queuing Telemetry Transport*) melalui broker publik **HiveMQ** (`broker.mqttdashboard.com:1883`). Untuk menjamin keamanan jalur komunikasi di broker publik, seluruh perancangan topik dienkapsulasi menggunakan prefix kelompok `pens/klp3/...`. Sistem dipantau dan dikendalikan secara terpusat melalui antarmuka web interaktif berbasis **Node-RED Dashboard**—menyajikan visualisasi tren suhu *multi-series*, pengukur (*gauge*) kelembapan presisi, indikator status konektivitas perangkat (*online/offline*) berbasis *Last Will and Testament* (LWT) dan *retained message*, serta panel kendali 8 saklar lampu secara seketika.
 
 ---
 
