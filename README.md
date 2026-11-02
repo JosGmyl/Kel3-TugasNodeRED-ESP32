@@ -191,7 +191,7 @@ Dashboard `/ui`:
 ## Hasil Pengujian (T1–T12)
 
 | No | Uji | Hasil | Keterangan |
-|---|---|---|---|
+|:---:|:---|:---:|:---|
 | T1 | Koneksi | ✓ | Board ESP32 berhasil terhubung ke jaringan Wi-Fi lokal dan broker HiveMQ (`broker.mqttdashboard.com:1883`). Serial Monitor mencetak log `MQTT Connection established.` secara stabil tanpa *bootloop* atau *delay* penghambat. |
 | T2 | Data 4 ruang | ✓ | Seluruh payload `temperature` dan `humidity` dari keempat ruangan berhasil terkirim secara berkala setiap ±5 detik. Pesan terbaca utuh pada tab Debug Node-RED melalui subscribe wildcard `pens/klp3/+/temperature` dan `pens/klp3/+/humidity`. |
 | T3 | Chart suhu | ✓ | Elemen chart line pada UI dashboard (`/ui`) berhasil memplot 4 garis multi-series berwarna berbeda. Fungsi parser pada Node-RED membedakan garis secara presisi berdasarkan pembacaan `msg.topic` masing-masing ruangan. |
