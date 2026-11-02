@@ -129,34 +129,51 @@ Prefix wajib: `pens/klp3/<nama_ruang>/<fungsi>`.
 
 ## Cara Menjalankan
 
-### 1. Library Arduino
+### 1. Kebutuhan Library Arduino
 
-Pasang lewat *Sketch → Include Library → Manage Libraries*:
+Pastikan Arduino IDE telah terpasang board package ESP32 dan pasang library berikut via *Sketch → Include Library → Manage Libraries*:
 
-- `EspMQTTClient` oleh Patrick Lapointe (Wi-Fi + MQTT + reconnect)
-- `DHT sensor library` oleh Adafruit (+ `Adafruit Unified Sensor` bila diminta)
+- **`EspMQTTClient`** oleh Patrick Lapointe (penanganan koneksi Wi-Fi, MQTT, auto-reconnect, dan LWT)
+- **`DHT sensor library`** oleh Adafruit (+ `Adafruit Unified Sensor` bila diminta)
 
-### 2. Upload ke ESP32
+### 2. Konfigurasi dan Upload Firmware ESP32
 
-1. Buka `esp32/esp32_ruang/esp32_ruang.ino`.
-2. Salin `secrets.example.h` menjadi `secrets.h`, isi `WIFI_SSID` & `WIFI_PASS`.
-   (File `secrets.h` sudah di-`.gitignore` — jangan commit kredensial asli.)
-3. Ganti **hanya** konstanta `ROOM` (`ruang1` … `ruang4`) sesuai board.
-4. Pilih board & port, lalu **Upload**. Buka Serial Monitor (115200) —
-   akan muncul `MQTT Connection established.` bila berhasil.
+1. Buka berkas `esp32/esp32_ruang/esp32_ruang.ino` pada Arduino IDE.
+2. Sesuaikan konfigurasi jaringan Wi-Fi pada baris kode:
+   ```cpp
+   #define WIFI_SSID "SSID_PILIHAN_ANDA"   // Nama Wi-Fi / Hotspot HP (Wajib 2.4 GHz)
+   #define WIFI_PASS "PASSWORD_ANDA"       // Password Wi-Fi
+   ```
+   > **Catatan Keamanan:** Hindari mengunggah SSID dan password asli ke repositori publik. Selalu kembalikan nilai ke placeholder `"SSID_LAB"` dan `"PASSWORD_LAB"` sebelum melakukan commit/push ke GitHub.
+3. Atur identitas ruangan pada konstanta `ROOM` sesuai modul board yang di-flash:
+   ```cpp
+   #define ROOM "ruang1" // Ganti menjadi ruang1, ruang2, ruang3, atau ruang4
+   ```
+   *(Konfigurasi topik MQTT dan Client ID unik akan terbentuk secara otomatis sesuai syarat E2 & E7).*
+4. Firmware telah mendukung deteksi target board otomatis:
+   - **ESP32 DevKit V1**: Sensor DHT11 (`GPIO 16`), Lampu 1 (`GPIO 25`), Lampu 2 (`GPIO 26`).
+   - **ESP32-S3**: Sensor DHT11 (`GPIO 16`), Lampu 1 (`GPIO 4`), Lampu 2 (`GPIO 9`).
+5. Sambungkan ESP32 ke komputer, pilih jenis board dan port COM yang sesuai, kemudian lakukan **Upload**.
+6. Buka **Serial Monitor** (baud rate `115200`). Pesan `MQTT Connection established.` akan muncul saat perangkat berhasil terhubung ke broker.
 
-### 3. Import flow ke Node-RED
+### 3. Konfigurasi dan Import Flow Node-RED
 
-1. Pasang paket palette: *Menu → Manage palette → Install* → `node-red-dashboard`.
-2. *Menu → Import → Clipboard/File*, pilih `node-red/flows.json`, lalu **Deploy**.
-3. Pastikan konfigurasi `mqtt-broker` menunjuk ke `broker.mqttdashboard.com:1883`
-   (server & port harus sama persis dengan kode ESP32).
+1. Pastikan modul palette dashboard telah terpasang di Node-RED:
+   - Buka menu *Manage palette* → tab *Install* → cari dan instal `node-red-dashboard`.
+2. Lakukan impor aliran kerja (*flow*):
+   - Klik menu garis tiga (pojok kanan atas) → *Import* → pilih berkas `node-red/flows.json` → klik **Import**.
+3. Pastikan konfigurasi node broker MQTT terhubung ke broker publik HiveMQ:
+   - Server: `broker.mqttdashboard.com`
+   - Port: `1883`
+4. Klik tombol **Deploy** di pojok kanan atas untuk mengaktifkan seluruh aliran data.
 
-### 4. Buka dashboard
+### 4. Mengakses Dashboard UI
 
-- Editor Node-RED : `http://localhost:1880`
-- Dashboard        : `http://localhost:1880/ui`
-- Dari HP (satu jaringan): `http://<IP_laptop>:1880/ui`
+- **Editor Flow Node-RED**: `http://localhost:1880`
+- **Dashboard Antarmuka UI**: `http://localhost:1880/ui`
+- **Akses Dashboard dari Perangkat Seluler (Smartphone)**:
+  Buka browser pada smartphone yang terhubung dalam satu jaringan Wi-Fi/LAN yang sama dengan laptop server, lalu akses:
+  `http://<IP_Local_Laptop>:1880/ui` *(contoh: `http://192.168.1.10:1880/ui`)*
 
 ---
 
