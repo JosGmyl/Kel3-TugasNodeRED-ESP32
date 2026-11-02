@@ -19,9 +19,6 @@ Data suhu/kelembapan dikirim ke broker publik **HiveMQ**
 | Video presentasi | maks. 7 menit | [YouTube: Video Presentasi](https://youtu.be/euNMfejJ7-Y?feature=shared) |
 | Video demo alat | maks. 5 menit | [YouTube: Video Demo Alat](https://youtu.be/euNMfejJ7-Y?feature=shared) |
 
-> Ganti tautan di atas (dan di [`video/LINK.md`](video/LINK.md)) setelah video
-> di-upload ke YouTube / Google Drive.
-
 ---
 
 ## Supported By
