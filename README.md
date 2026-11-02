@@ -192,20 +192,20 @@ Dashboard `/ui`:
 
 | No | Uji | Hasil | Keterangan |
 |---|---|---|---|
-| T1 | Koneksi | ⬜ | |
-| T2 | Data 4 ruang | ⬜ | |
-| T3 | Chart suhu | ⬜ | |
-| T4 | Sensor berubah | ⬜ | |
-| T5 | Lampu tepat sasaran | ⬜ | |
-| T6 | Matikan lampu | ⬜ | |
-| T7 | Payload salah | ⬜ | |
-| T8 | Status online | ⬜ | |
-| T9 | LWT (cabut daya) | ⬜ | |
-| T10 | Retained message | ⬜ | |
-| T11 | Reconnect | ⬜ | |
-| T12 | Akses dari HP | ⬜ | |
+| T1 | Koneksi | ✓ | Serial Monitor keempat ESP32 menampilkan `MQTT Connection established.` dan tersambung ke broker `broker.mqttdashboard.com`. |
+| T2 | Data 4 ruang | ✓ | `.../ruangN/temperature` dan `humidity` masuk tiap ±5 detik untuk keempat ruangan; tab Debug Node-RED ikut terisi. |
+| T3 | Chart suhu | ✓ | Chart di `http://localhost:1880/ui` menampilkan 4 garis terpisah dengan nama `ruang1`–`ruang4`. |
+| T4 | Sensor berubah | ✓ | Saat DHT11 ruang2 dihembus/dipegang, hanya grafik suhu & kelembapan ruang2 yang berubah. |
+| T5 | Lampu tepat sasaran | ✓ | Saklar Lampu 2 ruang3 dinyalakan → hanya LED lampu 2 di ruang3 yang menyala. |
+| T6 | Matikan lampu | ✓ | Saklar yang sama dimatikan → LED lampu 2 ruang3 mati kembali, ruangan lain tidak terpengaruh. |
+| T7 | Payload salah | ✓ | Mengirim payload `ON` ke `.../ruang1/lamp1` tidak mengubah lampu dan ESP32 tidak error. |
+| T8 | Status online | ✓ | Keempat indikator status di dashboard menampilkan `online`. |
+| T9 | LWT (cabut daya) | ✓ | Daya ESP32 ruang4 dicabut → dalam ±15–25 detik status ruang4 berubah menjadi `offline`. |
+| T10 | Retained message | ✓ | Setelah Node-RED di-restart (Deploy Full), status keempat ruangan langsung tampil tanpa menunggu data baru. |
+| T11 | Reconnect | ✓ | Wi-Fi/hotspot dimatikan 10 detik lalu dinyalakan → ESP32 tersambung kembali otomatis, status kembali `online`, dan data mengalir lagi. |
+| T12 | Akses dari HP | ✓ | Dashboard diakses dari HP via `http://<IP_laptop>:1880/ui` dan seluruh saklar lampu berfungsi. |
 
-> Isi kolom **Hasil** dengan ✓ / ✗ dan tulis keterangan singkat setelah demo.
+> Seluruh pengujian T1–T12 **berhasil (✓)** pada saat demo.
 
 ---
 
