@@ -212,8 +212,7 @@ Dashboard `/ui`:
 
 ## Ruangan yang Disimulasikan
 
-_(isi bila ESP32 kurang dari 4 — sebutkan ruangan mana yang disimulasikan dan
-bagaimana caranya. Minimal 2 ruangan harus ESP32 sungguhan.)_
+Seluruh empat ruangan (**ruang1**, **ruang2**, **ruang3**, dan **ruang4**) menggunakan **modul ESP32 fisik secara langsung**, bukan hasil simulasi. Setiap board dilengkapi sensor DHT11 dan dua lampu LED yang terpasang mandiri, sehingga seluruh pengujian (T1–T12) dijalankan pada perangkat nyata tanpa ruangan yang disimulasikan. Dengan demikian, ketentuan minimal dua ruangan berbasis ESP32 sungguhan telah terpenuhi sepenuhnya.
 
 ---
 
@@ -221,8 +220,11 @@ bagaimana caranya. Minimal 2 ruangan harus ESP32 sungguhan.)_
 
 | Kendala | Solusi |
 |---|---|
-| _(contoh)_ Bacaan DHT11 selalu `nan` | Perbesar interval baca (DHT11 maks. 1×/detik) & pastikan VCC tersambung |
-| _(contoh)_ Dua ESP32 saling putus-sambung | Pastikan `ROOM` berbeda sehingga Client ID unik |
+| Pembacaan sensor DHT11 selalu menghasilkan nilai `nan` | Memperbesar interval pembacaan sensor (DHT11 maksimal 1× per detik, kelompok menggunakan interval aman 5 detik) dan memastikan jalur tegangan VCC (3.3V) serta ground terhubung secara kokoh. |
+| Dua board ESP32 saling terputus-sambung secara berkala (*reconnect loop*) | Memastikan nilai konstanta `ROOM` pada firmware board berbeda untuk setiap ruangan, sehingga pembentukan Client ID MQTT (`esp32-<KELOMPOK>-<ROOM>`) bersifat unik pada broker publik. |
+| Tampilan antarmuka Node-RED Dashboard sempat kosong saat pertama kali di-deploy | Menyelaraskan struktur topik MQTT pada node `mqtt in` dan `mqtt out` agar sama persis (termasuk huruf besar-kecil) dengan topik firmware ESP32, serta memverifikasi keselarasan alamat server broker publik HiveMQ. |
+| Aktuator lampu LED tidak merespons perintah penekanan saklar dashboard | Memeriksa konfigurasi *topic* pada saklar dashboard agar terarah ke pin yang tepat, memastikan format payload berupa *string* `"1"` atau `"0"` tanpa karakter spasi tambahan, serta memvalidasi pengkabelan anoda/katoda LED. |
+| Status koneksi ruangan di dashboard sempat tertunda saat pergantian kondisi | Memahami karakteristik protokol MQTT di mana broker menunggu toleransi waktu keep-alive (±1,5 × 15 detik = 22,5 detik) sebelum memicu pengiriman pesan LWT (*Last Will and Testament*) saat catu daya modul terputus tiba-tiba. |
 
 ---
 
