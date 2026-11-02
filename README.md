@@ -16,8 +16,8 @@ Data suhu/kelembapan dikirim ke broker publik **HiveMQ**
 
 | Video | Durasi | Link |
 |---|---|---|
-| Video presentasi | maks. 7 menit | 🔗 _belum tersedia_ |
-| Video demo alat | maks. 5 menit | 🔗 _belum tersedia_ |
+| Video presentasi | maks. 7 menit | [YouTube: Video Presentasi](https://youtu.be/euNMfejJ7-Y?feature=shared) |
+| Video demo alat | maks. 5 menit | [YouTube: Video Demo Alat](https://youtu.be/euNMfejJ7-Y?feature=shared) |
 
 > Ganti tautan di atas (dan di [`video/LINK.md`](video/LINK.md)) setelah video
 > di-upload ke YouTube / Google Drive.
@@ -37,7 +37,7 @@ Data suhu/kelembapan dikirim ke broker publik **HiveMQ**
 
 | No | NRP | Nama | Ruangan | Jobdesk | GitHub |
 |---|---|---|---|---|---|
-| 1 | 2124600061 | Agmila Salsabila | `ruang1` | README & dokumentasi | _tambahkan username_ |
+| 1 | 2124600061 | Agmila Salsabila | `ruang1` | README & dokumentasi | [@agmilaocha-pixel](https://github.com/agmilaocha-pixel) |
 | 2 | 2124600073 | Muhammad Ziat Thoriq | `ruang2` | Program ESP32 | _tambahkan username_ |
 | 3 | 2124600076 | Joshua Gamylael | `ruang3` | Flow & dashboard Node-RED | _tambahkan username_ |
 | 4 | 2124600077 | Fadiaz Arta Maulana | `ruang4` | Hardware & pengujian | _tambahkan username_ |
