@@ -211,14 +211,14 @@ bagaimana caranya. Minimal 2 ruangan harus ESP32 sungguhan.)_
 
 ## Pembagian Tugas
 
-Setiap anggota minimal memiliki **2 commit** pada repositori ini. Tabel di bawah merangkum **2 commit paling vital** dari masing-masing anggota berdasarkan riwayat riil git (`git log`):
+Setiap anggota minimal memiliki **2 commit** pada repositori ini. Tabel di bawah merangkum **2 kontribusi commit utama** dari masing-masing anggota berdasarkan riwayat pengembangan proyek:
 
-| Anggota | Commit 1 (Vital) | Commit 2 (Vital) |
+| Anggota | Commit 1 | Commit 2 |
 |---|---|---|
-| **Agmila Salsabila**<br>([@agmilaoca-pixel](https://github.com/agmilaoca-pixel)) | `98c5338`: Tambah tautan video presentasi & video demo pada `README.md` dan `video/LINK.md` | `a169c2c`: Lengkapi username GitHub seluruh anggota kelompok pada tabel Team Member |
-| **Muhammad Ziat Thoriq**<br>([@Zthorrr](https://github.com/Zthorrr)) | `878ae31`: Unggah laporan PDF, kode program ESP32, flow Node-RED, dan isi hasil uji T1–T12 | `4949011`: Perbarui deskripsi teknis dan elaborasi hasil pengujian T1–T12 pada README |
-| **Joshua Gamylael**<br>([@JosGmyl](https://github.com/JosGmyl)) | `d59b7c3`: Inisialisasi awal repositori proyek (`Initial commit`) | `51b9de9`: Tambah gambar blok diagram arsitektur sistem dan rapikan tautan video |
-| **Fadiaz Arta Maulana**<br>([@fadiazarts](https://github.com/fadiazarts)) | `bbd737c`: Buat kerangka lengkap `README.md` dan struktur pembagian anggota kelompok | `322a913`: Sesuaikan struktur direktori repo dengan aturan tugas (docs, images, laporan) |
+| **Agmila Salsabila**<br>([@agmilaoca-pixel](https://github.com/agmilaoca-pixel)) | Mengintegrasikan tautan video presentasi arsitektur dan demo alat pada dokumentasi `README.md` serta `video/LINK.md` | Melengkapi profil dan tautan repositori GitHub seluruh anggota kelompok pada tabel Team Member |
+| **Muhammad Ziat Thoriq**<br>([@Zthorrr](https://github.com/Zthorrr)) | Mengunggah dokumen laporan proyek (`laporan.pdf`), firmware ESP32 (`esp32_ruang.ino`), konfigurasi aliran data Node-RED (`flows.json`), dan rekapitulasi awal pengujian | Melakukan elaborasi mendalam serta menyusun deskripsi teknis hasil pengujian fungsional sistem (T1–T12) pada dokumentasi utama |
+| **Joshua Gamylael**<br>([@JosGmyl](https://github.com/JosGmyl)) | Melakukan inisialisasi awal repositori proyek kelompok di GitHub | Mengintegrasikan diagram blok arsitektur sistem ke dalam direktori dokumentasi serta menyempurnakan tata letak README |
+| **Fadiaz Arta Maulana**<br>([@fadiazarts](https://github.com/fadiazarts)) | Merancang kerangka dasar laporan `README.md`, deskripsi proyek, serta pembagian alokasi ruangan anggota | Menata dan menyelaraskan struktur direktori repositori sesuai standarisasi ketentuan tugas mata kuliah |
 
 ---
 
