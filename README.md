@@ -114,7 +114,7 @@ Data suhu/kelembapan dikirim ke broker publik **HiveMQ**
 
 ### Foto rangkaian
 
-![Rangkaian](docs/images/rangkaian.jpg)
+![Rangkaian](docs/images/rangkaian.jpeg)
 
 ---
 
