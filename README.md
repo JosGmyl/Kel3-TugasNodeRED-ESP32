@@ -1,6 +1,8 @@
 # Kel3-TugasNodeRED-ESP32
 ### Smart Multi-Room Environmental Monitoring & Actuator Control System via MQTT and Node-RED
 
+> Proyek integrasi *Internet of Things* (IoT) berbasis mikrokontroler ESP32 dan antarmuka web Node-RED Dashboard untuk pemantauan telemetri multi-ruangan serta pengendalian aktuator dua arah secara *real-time* melalui protokol MQTT.
+
 Proyek ini merupakan implementasi sistem automasi dan pemantauan lingkungan berbasis *Internet of Things* (IoT) untuk empat ruangan terdistribusi (**ruang1** hingga **ruang4**). Setiap ruangan dioperasikan oleh node mikrokontroler **ESP32** mandiri yang terintegrasi dengan sensor suhu dan kelembapan **DHT11** serta dua aktuator lampu LED yang dapat dikontrol secara dua arah (*bi-directional control*).
 
 Seluruh telemetri data lingkungan dan instruksi kendali ditransmisikan secara *real-time* memanfaatkan protokol ringan **MQTT** (*Message Queuing Telemetry Transport*) melalui broker publik **HiveMQ** (`broker.mqttdashboard.com:1883`). Untuk menjamin keamanan jalur komunikasi di broker publik, seluruh perancangan topik dienkapsulasi menggunakan prefix kelompok `pens/klp3/...`. Sistem dipantau dan dikendalikan secara terpusat melalui antarmuka web interaktif berbasis **Node-RED Dashboard**—menyajikan visualisasi tren suhu *multi-series*, pengukur (*gauge*) kelembapan presisi, indikator status konektivitas perangkat (*online/offline*) berbasis *Last Will and Testament* (LWT) dan *retained message*, serta panel kendali 8 saklar lampu secara seketika.
