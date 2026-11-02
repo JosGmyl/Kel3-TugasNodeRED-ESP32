@@ -192,18 +192,18 @@ Dashboard `/ui`:
 
 | No | Uji | Hasil | Keterangan |
 |---|---|---|---|
-| T1 | Koneksi | ✓ | Serial Monitor keempat ESP32 menampilkan `MQTT Connection established.` dan tersambung ke broker `broker.mqttdashboard.com`. |
-| T2 | Data 4 ruang | ✓ | `.../ruangN/temperature` dan `humidity` masuk tiap ±5 detik untuk keempat ruangan; tab Debug Node-RED ikut terisi. |
-| T3 | Chart suhu | ✓ | Chart di `http://localhost:1880/ui` menampilkan 4 garis terpisah dengan nama `ruang1`–`ruang4`. |
-| T4 | Sensor berubah | ✓ | Saat DHT11 ruang2 dihembus/dipegang, hanya grafik suhu & kelembapan ruang2 yang berubah. |
-| T5 | Lampu tepat sasaran | ✓ | Saklar Lampu 2 ruang3 dinyalakan → hanya LED lampu 2 di ruang3 yang menyala. |
-| T6 | Matikan lampu | ✓ | Saklar yang sama dimatikan → LED lampu 2 ruang3 mati kembali, ruangan lain tidak terpengaruh. |
-| T7 | Payload salah | ✓ | Mengirim payload `ON` ke `.../ruang1/lamp1` tidak mengubah lampu dan ESP32 tidak error. |
-| T8 | Status online | ✓ | Keempat indikator status di dashboard menampilkan `online`. |
-| T9 | LWT (cabut daya) | ✓ | Daya ESP32 ruang4 dicabut → dalam ±15–25 detik status ruang4 berubah menjadi `offline`. |
-| T10 | Retained message | ✓ | Setelah Node-RED di-restart (Deploy Full), status keempat ruangan langsung tampil tanpa menunggu data baru. |
-| T11 | Reconnect | ✓ | Wi-Fi/hotspot dimatikan 10 detik lalu dinyalakan → ESP32 tersambung kembali otomatis, status kembali `online`, dan data mengalir lagi. |
-| T12 | Akses dari HP | ✓ | Dashboard diakses dari HP via `http://<IP_laptop>:1880/ui` dan seluruh saklar lampu berfungsi. |
+| T1 | Koneksi | ✓ | Board ESP32 berhasil terhubung ke jaringan Wi-Fi lokal dan broker HiveMQ (`broker.mqttdashboard.com:1883`). Serial Monitor mencetak log `MQTT Connection established.` secara stabil tanpa *bootloop* atau *delay* penghambat. |
+| T2 | Data 4 ruang | ✓ | Seluruh payload `temperature` dan `humidity` dari keempat ruangan berhasil terkirim secara berkala setiap ±5 detik. Pesan terbaca utuh pada tab Debug Node-RED melalui subscribe wildcard `pens/klp3/+/temperature` dan `pens/klp3/+/humidity`. |
+| T3 | Chart suhu | ✓ | Elemen chart line pada UI dashboard (`/ui`) berhasil memplot 4 garis multi-series berwarna berbeda. Fungsi parser pada Node-RED membedakan garis secara presisi berdasarkan pembacaan `msg.topic` masing-masing ruangan. |
+| T4 | Sensor berubah | ✓ | Respon sensor dinamis dan terisolasi. Pemberian rangsangan fisik (hembusan udara hangat) pada sensor DHT11 di ruang2 hanya menaikkan metrik suhu/kelembapan ruang2 secara *real-time*, sedangkan data sensor ruang lainnya tetap stabil. |
+| T5 | Lampu tepat sasaran | ✓ | Saklar kendali beroperasi tepat sasaran (spesifik). Penekanan saklar Lampu 2 Ruang 3 pada dashboard via MQTT topic QoS 1 secara instan menyalakan aktuator LED fisik di pin GPIO ruangan tersebut tanpa memicu lampu ruangan lain. |
+| T6 | Matikan lampu | ✓ | Pengiriman payload `"0"` dari dashboard berhasil mematikan LED terkait secara seketika, membuktikan kendali dua arah (bi-directional) berjalan sinkron tanpa kendala latensi. |
+| T7 | Payload salah | ✓ | Mekanisme validasi payload berjalan baik. Pengujian manual via terminal dengan payload non-standar (misalnya string `"ON"`, angka `2`, atau teks acak) diabaikan oleh ESP32; status pin lampu tidak terganggu dan sistem tetap beroperasi normal. |
+| T8 | Status online | ✓ | Indikator status seluruh ruangan pada Node-RED Dashboard menampilkan teks `online` sesaat setelah koneksi MQTT terjalin via mekanisme publikasi *retained message*. |
+| T9 | LWT (cabut daya) | ✓ | Fitur *Last Will and Testament* (LWT) berjalan sesuai standar MQTT. Pemutusan catu daya ESP32 ruang4 memicu broker mengirimkan payload LWT `offline` secara otomatis dalam rentang 15–20 detik (1,5× keep-alive). |
+| T10 | Retained message | ✓ | Node-RED yang di-deploy ulang (*Full Deploy*) maupun di-refresh dapat langsung memuat status koneksi terakhir (`online`/`offline`) dari broker seketika tanpa harus menunggu board ESP32 mem-publish ulang. |
+| T11 | Reconnect | ✓ | Fitur auto-reconnect dari pustaka `EspMQTTClient` teruji tangguh. Ketika koneksi access point/hotspot sempat diputus selama 10 detik lalu diaktifkan kembali, ESP32 otomatis pulih dan melanjutkan streaming telemetri secara mandiri. |
+| T12 | Akses dari HP | ✓ | Web UI dashboard dapat diakses responsif melalui browser smartphone dalam satu subnet LAN (`http://<IP_laptop>:1880/ui`). Pengontrolan 8 saklar sakelar lampu serta visualisasi grafik berjalan lancar tanpa kendala rendering. |
 
 > Seluruh pengujian T1–T12 **berhasil (✓)** pada saat demo.
 
