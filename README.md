@@ -211,15 +211,14 @@ bagaimana caranya. Minimal 2 ruangan harus ESP32 sungguhan.)_
 
 ## Pembagian Tugas
 
-Setiap anggota minimal memiliki **2 commit** pada repositori ini.
-Pesan commit ditulis jelas (bukan `update` / `fix`).
+Setiap anggota minimal memiliki **2 commit** pada repositori ini. Tabel di bawah merangkum **2 commit paling vital** dari masing-masing anggota berdasarkan riwayat riil git (`git log`):
 
-| Anggota | Commit 1 | Commit 2 |
+| Anggota | Commit 1 (Vital) | Commit 2 (Vital) |
 |---|---|---|
-| **Agmila Salsabila** (ota 1) | Buat `README.md` — judul, nama anggota, pembagian ruangan | Edit README — tambahkan tabel topic MQTT & tabel pin hardware |
-| **Muhammad Ziat Thoriq** (ota 2) | Unggah kode program ESP32 (`.ino`) awal (sensor & Wi-Fi) | Tambah callback lampu & LWT + gambar `docs/images/` |
-| **Joshua Gamylael** (ota 3) | Unggah file hasil export Node-RED (`flows.json`) | Edit README — penjelasan flow & komponen dashboard Node-RED |
-| **Fadiaz Arta Maulana** (ota 4) | Unggah foto rangkaian fisik ESP32 & screenshot dashboard `/ui` | Edit README — gambar, hasil uji, link video demo |
+| **Agmila Salsabila**<br>([@agmilaoca-pixel](https://github.com/agmilaoca-pixel)) | `98c5338`: Tambah tautan video presentasi & video demo pada `README.md` dan `video/LINK.md` | `a169c2c`: Lengkapi username GitHub seluruh anggota kelompok pada tabel Team Member |
+| **Muhammad Ziat Thoriq**<br>([@Zthorrr](https://github.com/Zthorrr)) | `878ae31`: Unggah laporan PDF, kode program ESP32, flow Node-RED, dan isi hasil uji T1–T12 | `4949011`: Perbarui deskripsi teknis dan elaborasi hasil pengujian T1–T12 pada README |
+| **Joshua Gamylael**<br>([@JosGmyl](https://github.com/JosGmyl)) | `d59b7c3`: Inisialisasi awal repositori proyek (`Initial commit`) | `51b9de9`: Tambah gambar blok diagram arsitektur sistem dan rapikan tautan video |
+| **Fadiaz Arta Maulana**<br>([@fadiazarts](https://github.com/fadiazarts)) | `bbd737c`: Buat kerangka lengkap `README.md` dan struktur pembagian anggota kelompok | `322a913`: Sesuaikan struktur direktori repo dengan aturan tugas (docs, images, laporan) |
 
 ---
 
