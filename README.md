@@ -62,26 +62,13 @@ Data suhu/kelembapan dikirim ke broker publik **HiveMQ**
 
 ## Arsitektur Sistem
 
-```
-                           ┌────────────────────┐
-  ESP32 ruang1 ────────────┤                    │
-  ESP32 ruang2 ────────────┤  Broker MQTT       ├──────── Node-RED ──── Browser
-  ESP32 ruang3 ────────────┤  (HiveMQ publik)   │         (client)      /ui
-  ESP32 ruang4 ────────────┤                    │
-                           └────────────────────┘
-  publish  : temperature, humidity, status      subscribe: .../+/temperature
-  subscribe: lamp1, lamp2                                  .../+/humidity
-                                                           .../+/status
-                                                publish  : .../ruangN/lamp1, lamp2
-```
+![Blok Diagram](docs/images/blok-diagram.png)
 
 - **ESP32** membaca DHT11 tiap 5 detik → publish `temperature` & `humidity`,
   mendengarkan `lamp1`/`lamp2`, dan mengumumkan status `online`/`offline` (LWT).
 - **Broker** meneruskan pesan antar client (QoS 0 untuk sensor, QoS 1 untuk lampu).
 - **Node-RED** berlangganan dengan wildcard dan menampilkan dashboard di `/ui`,
   serta mengirim perintah lampu ke `.../ruangN/lamp1` dan `.../ruangN/lamp2`.
-
-![Blok Diagram](docs/images/blok-diagram.png)
 
 ---
 
